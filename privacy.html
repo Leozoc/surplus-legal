@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Surplus</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; line-height: 1.6; color: #1c1b18; background: #F6F4F0; }
+  @media (prefers-color-scheme: dark) { body { color: #f0ede6; background: #17150f; } a { color: #f4b64e; } table, th, td { border-color: #3a362c; } }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  a { color: #b9791f; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #d8d2c4; padding: 0.5rem 0.75rem; text-align: left; font-size: 0.95rem; }
+  code { background: rgba(0,0,0,0.06); padding: 0.1rem 0.3rem; border-radius: 4px; }
+  nav { margin-bottom: 2rem; font-size: 0.9rem; }
+  nav a { margin-right: 1rem; }
+</style>
+</head>
+<body>
+<nav><a href="index.html">Surplus</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
+<h1>Privacy policy — Surplus</h1>
+<p><strong>Last updated 6 August 2026.</strong></p>
+<p>Surplus is a weight-gain tracker for iOS. This policy says what the app collects, where it goes, and what is never kept. It is written to be read, not to be survived.</p>
+<h2>The short version</h2>
+<ul>
+<li>Your meals, weight, and profile live <strong>on your device</strong>. They are not uploaded.</li>
+<li>We never ask for your name, email, or any account. There is no sign-up.</li>
+<li>Meal photos you scan are sent to an AI provider to be turned into numbers, and stored privately in your own folder.</li>
+<li><strong>Photos of your kitchen are deleted within seconds of being read, always.</strong></li>
+<li>Analytics records that things happened, never anything about your body.</li>
+</ul>
+<h2>What stays on your device</h2>
+<p>Your profile, every meal you log, every weigh-in, your targets, your progress, and your kitchen inventory are stored locally on your phone.</p>
+<p>The consequence is worth stating plainly: <strong>if you lose or wipe your device, that data is gone.</strong> There is no account to restore it from, because there is no account. That is a deliberate trade — no sign-up screen, no email, nothing to breach — and you should know about it before it matters.</p>
+<h2>Your identity</h2>
+<p>Surplus signs you in anonymously. Our servers issue a random identifier for your install. We do not receive, request, or store your name, email address, phone number, date of birth, or Apple ID.</p>
+<p>Nobody at Surplus can look at a row of data and know who you are.</p>
+<h2>Meal photos</h2>
+<p>When you scan a meal:</p>
+<ol>
+<li>The photo is resized on your device and uploaded to private storage that only your install can read.</li>
+<li>It is sent to an AI provider (currently Google) which returns estimated calories and macros.</li>
+<li>The photo stays in your private storage so it can appear alongside that meal in your own diary.</li>
+</ol>
+<p>You can erase everything, including photos, from Settings → Erase everything.</p>
+<p><strong>We use a paid AI tier specifically because paid tiers do not use your content to train models.</strong> Free tiers of these services generally do. The difference costs us about a dollar per user per year and we consider it non-negotiable for photographs of your food.</p>
+<h2>Photos of your kitchen — the one that matters most</h2>
+<p>If you photograph a shelf, fridge, cupboard, or receipt to fill in your kitchen inventory:</p>
+<p><strong>That photo is deleted from our servers before the request finishes. Every time, including when the scan fails.</strong></p>
+<p>It is not kept for a day, or until a cleanup job runs, or under a retention policy someone could later extend. It is read, the food is listed, and it is deleted in the same request.</p>
+<p>This is the strictest rule in the product, and it exists because a fridge is not just food. It can contain medication, alcohol, someone else's things, post stuck to the door, and sometimes another person. None of that has any business on a server, and its usefulness to us ends the moment the food is recognised.</p>
+<p>The AI provider is also instructed to ignore and never describe people, medication, paperwork, or anything that is not food.</p>
+<h2>Menus</h2>
+<p>If you photograph a restaurant menu, the extracted <strong>text</strong> is stored and shared with other Surplus users, so the next person who eats there does not have to scan it again. The source photograph is discarded.</p>
+<p>A menu is a public document. It contains no information about you, and nothing linking it to you is shown to anyone else.</p>
+<h2>Analytics</h2>
+<p>We use PostHog to understand whether the app works: how many people finish setting up, where they stop, whether the scanner gets used.</p>
+<p>Every event we send is written down in advance in the app's source code, and anything not on that list is dropped before it is sent. <strong>Nothing about your body is on that list</strong> — not your weight, height, BMI, goal weight, age, or sex. Not the names of foods you log. Not photographs.</p>
+<p>We do not use advertising identifiers, we do not track you across other apps or websites, and we do not sell or share data with data brokers.</p>
+<h2>Payments</h2>
+<p>Subscriptions are handled by Apple, with RevenueCat managing what your subscription entitles you to. <strong>We never see your card details.</strong> Apple does not give them to us.</p>
+<h2>Who else is involved</h2>
+<table>
+<thead>
+<tr>
+<th>Who</th>
+<th>What they do</th>
+<th>What they get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apple</td>
+<td>Payments, app delivery</td>
+<td>Your purchase; we see only whether you are subscribed</td>
+</tr>
+<tr>
+<td>Supabase</td>
+<td>Anonymous sign-in, photo storage, our servers</td>
+<td>Your anonymous ID, meal photos</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Estimates calories from photos</td>
+<td>The photo, briefly. Paid tier: not used for training</td>
+</tr>
+<tr>
+<td>RevenueCat</td>
+<td>Subscription status</td>
+<td>Your anonymous ID and subscription state</td>
+</tr>
+<tr>
+<td>PostHog</td>
+<td>Product analytics</td>
+<td>Anonymous events from the list described above</td>
+</tr>
+</tbody>
+</table>
+<h2>Your choices</h2>
+<ul>
+<li><strong>Erase everything</strong> — Settings → Erase everything removes your local data and your stored photos.</li>
+<li><strong>Don't scan</strong> — the camera is optional. Search and manual logging work without it, and the app works fully offline.</li>
+<li><strong>Ask us</strong> — you can ask what we hold against your anonymous ID, and ask us to delete it.</li>
+</ul>
+<h2>Age</h2>
+<p>Surplus is not intended for under-16s and we do not knowingly collect anything from them.</p>
+<h2>Not medical advice</h2>
+<p>Surplus is a tracking tool, not a clinician. It caps how fast it will help you gain weight, and declines to set a target for some people on purpose. If you have a medical condition or an eating disorder, please talk to a doctor rather than an app.</p>
+<h2>Changes</h2>
+<p>If this policy changes materially we will say so in the app rather than quietly updating the date.</p>
+<h2>Contact</h2>
+<p>leomartinezbarrio@gmail.com</p>
+</body>
+</html>
