@@ -19,15 +19,17 @@
 </style>
 </head>
 <body>
-<nav><a href="index.html">Surplus</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
+<nav><a href="index.html">Surplus</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></nav>
 <h1>Privacy policy — Surplus</h1>
-<p><strong>Last updated 6 August 2026.</strong></p>
+<p><strong>Last updated 13 August 2026.</strong></p>
 <p>Surplus is a weight-gain tracker for iOS. This policy says what the app collects, where it goes, and what is never kept. It is written to be read, not to be survived.</p>
+<p><strong>Who is responsible for it.</strong> Surplus is operated by Leo Martinez Barrio, an individual developer based in Spain. That person is the data controller and can be reached at leomartinezbarrio@gmail.com. There is no company behind this and no other staff: one person built it and one person can see whatever the servers hold.</p>
 <h2>The short version</h2>
 <ul>
 <li>Your meals, weight, and profile live <strong>on your device</strong>. They are not uploaded.</li>
 <li>We never ask for your name, email, or any account. There is no sign-up.</li>
 <li>Meal photos you scan are sent to an AI provider to be turned into numbers, and stored privately in your own folder.</li>
+<li>Anything you <strong>type</strong> about a meal — a description, or a correction like "I only had half" — goes to that same provider, and is not stored by us as text.</li>
 <li><strong>Photos of your kitchen are deleted within seconds of being read, always.</strong></li>
 <li>Analytics records that things happened, never anything about your body.</li>
 </ul>
@@ -41,11 +43,12 @@
 <p>When you scan a meal:</p>
 <ol>
 <li>The photo is resized on your device and uploaded to private storage that only your install can read.</li>
-<li>It is sent to an AI provider (currently Google) which returns estimated calories and macros.</li>
+<li>It is sent to an AI provider — <strong>currently OpenAI</strong>, whose servers are in the United States — which returns estimated calories and macros. The photo is sent for that one request and is not kept by us beyond your own private folder.</li>
 <li>The photo stays in your private storage so it can appear alongside that meal in your own diary.</li>
 </ol>
 <p>You can erase everything, including photos, from Settings → Erase everything.</p>
-<p><strong>We use a paid AI tier specifically because paid tiers do not use your content to train models.</strong> Free tiers of these services generally do. The difference costs us about a dollar per user per year and we consider it non-negotiable for photographs of your food.</p>
+<p><strong>We use a paid AI tier specifically because paid tiers do not use your content to train models.</strong> Free tiers of these services generally do. It costs us more and we consider it non-negotiable for photographs of your food.</p>
+<p>If we change AI provider we will update the name above in the same change that switches it, not afterwards. That is a rule we broke once — this document said Google for four days after the provider became OpenAI — and it is now part of the checklist for changing one.</p>
 <h2>Photos of your kitchen — the one that matters most</h2>
 <p>If you photograph a shelf, fridge, cupboard, or receipt to fill in your kitchen inventory:</p>
 <p><strong>That photo is deleted from our servers before the request finishes. Every time, including when the scan fails.</strong></p>
@@ -55,6 +58,37 @@
 <h2>Menus</h2>
 <p>If you photograph a restaurant menu, the extracted <strong>text</strong> is stored and shared with other Surplus users, so the next person who eats there does not have to scan it again. The source photograph is discarded.</p>
 <p>A menu is a public document. It contains no information about you, and nothing linking it to you is shown to anyone else.</p>
+<p>Because a camera does not know what it is pointed at, the model is asked to say whether what it read is actually a menu — and if it says no, nothing is stored and nothing is shared. If you photograph a prescription, a letter, or your own notes by mistake, that text does not end up in front of anyone.</p>
+<h2>What you type about a meal</h2>
+<p>Two places in the app take a sentence rather than a photograph, and both send it to the same AI provider — <strong>currently OpenAI</strong>, in the United States.</p>
+<ul>
+<li><strong>Describing a meal.</strong> "Two eggs on toast and a coffee." The sentence is sent to be turned into calories and macros.</li>
+<li><strong>Correcting one.</strong> "I only had half." "There was no cheese." Here the estimate being corrected is sent along with your sentence — the name, the numbers, and the list of ingredients the model previously thought it saw — because a correction only makes sense next to the thing it is correcting.</li>
+</ul>
+<p>Neither is stored by us as text. What comes back is a number, and the number is what lands in your diary.</p>
+<p><strong>Write what you ate, not who you are.</strong> These are free-text boxes, so they will accept anything — but the only thing that helps is a description of food. We never ask for anything else in them, and nothing else in them makes the estimate better.</p>
+<h2>Why we are allowed to hold any of this</h2>
+<p>Under the GDPR everything here rests on one of two grounds, and it is worth saying which:</p>
+<ul>
+<li><strong>Performing the service you asked for</strong> (Article 6(1)(b)). Your anonymous sign-in, the photo you send to be read, the menu you scan, the record of how much a scan cost us. Without these the app cannot do the thing you opened it for.</li>
+<li><strong>Our legitimate interest in knowing whether the app works</strong> (Article 6(1)(f)). The analytics events listed below, which say that something happened and never what your body is. If you would rather not be counted, the app works identically without a network connection.</li>
+</ul>
+<p>We do not rely on consent for anything, because we do not do anything that would need it: no advertising, no profiling, no selling, no sharing with data brokers.</p>
+<h2>How long we keep it</h2>
+<ul>
+<li><strong>Your own data</strong> — profile, meals, weigh-ins, progress — lives on your device for as long as you keep the app, and is gone when you erase it or delete the app.</li>
+<li><strong>Meal photos</strong> — in your private folder until you erase them. We do not have a fixed deletion date for these yet, and rather than invent one we will say plainly that "Erase everything" is currently the thing that removes them.</li>
+<li><strong>Kitchen photos</strong> — deleted within the same request, always. Seconds.</li>
+<li><strong>Menu text</strong> — kept, shared, and not linked to you (see below). A menu older than 90 days is treated as out of date and re-read.</li>
+<li><strong>Scan cost records</strong> — the model, the tokens, and the fractions of a cent each request cost, against your anonymous id. Kept while your account exists, deleted with it.</li>
+<li><strong>Analytics events</strong> — held by PostHog on our behalf for up to 12 months, against your anonymous id.</li>
+</ul>
+<h2>Sending data outside the EU</h2>
+<p>Our database and photo storage are in the EU. Two processors are not:</p>
+<ul>
+<li><strong>OpenAI</strong> (United States) receives meal photos, kitchen photos, menu photos, typed meal descriptions, and the corrections you type about a meal along with the estimate being corrected. Transfers rely on the European Commission's Standard Contractual Clauses, which form part of OpenAI's data processing terms.</li>
+<li><strong>Apple</strong> and <strong>RevenueCat</strong> (United States) handle payment and subscription status, on the same basis.</li>
+</ul>
 <h2>Analytics</h2>
 <p>We use PostHog to understand whether the app works: how many people finish setting up, where they stop, whether the scanner gets used.</p>
 <p>Every event we send is written down in advance in the app's source code, and anything not on that list is dropped before it is sent. <strong>Nothing about your body is on that list</strong> — not your weight, height, BMI, goal weight, age, or sex. Not the names of foods you log. Not photographs.</p>
@@ -63,46 +97,22 @@
 <p>Subscriptions are handled by Apple, with RevenueCat managing what your subscription entitles you to. <strong>We never see your card details.</strong> Apple does not give them to us.</p>
 <h2>Who else is involved</h2>
 <table>
-<thead>
-<tr>
-<th>Who</th>
-<th>What they do</th>
-<th>What they get</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Apple</td>
-<td>Payments, app delivery</td>
-<td>Your purchase; we see only whether you are subscribed</td>
-</tr>
-<tr>
-<td>Supabase</td>
-<td>Anonymous sign-in, photo storage, our servers</td>
-<td>Your anonymous ID, meal photos</td>
-</tr>
-<tr>
-<td>Google</td>
-<td>Estimates calories from photos</td>
-<td>The photo, briefly. Paid tier: not used for training</td>
-</tr>
-<tr>
-<td>RevenueCat</td>
-<td>Subscription status</td>
-<td>Your anonymous ID and subscription state</td>
-</tr>
-<tr>
-<td>PostHog</td>
-<td>Product analytics</td>
-<td>Anonymous events from the list described above</td>
-</tr>
-</tbody>
+<tr><th>Who</th><th>What they do</th><th>What they get</th></tr>
+<tr><td>Apple</td><td>Payments, app delivery</td><td>Your purchase; we see only whether you are subscribed</td></tr>
+<tr><td>Supabase</td><td>Anonymous sign-in, photo storage, our servers</td><td>Your anonymous ID, meal photos</td></tr>
+<tr><td>OpenAI (US)</td><td>Estimates calories from photos and from what you type, reads menus, and applies your corrections</td><td>The photo or the text, for that one request. Paid tier: not used for training</td></tr>
+<tr><td>RevenueCat</td><td>Subscription status</td><td>Your anonymous ID and subscription state</td></tr>
+<tr><td>PostHog</td><td>Product analytics</td><td>Anonymous events from the list described above</td></tr>
 </table>
-<h2>Your choices</h2>
+<h2>Your choices, and your rights</h2>
 <ul>
-<li><strong>Erase everything</strong> — Settings → Erase everything removes your local data and your stored photos.</li>
+<li><strong>Erase everything</strong> — Settings → Erase everything. It removes your local data, your stored photos, your anonymous account, your subscription record, and every scan-cost row we hold against you. Menu text you contributed stays, with the link to you removed, because a menu is a public document and other people are relying on it.</li>
 <li><strong>Don't scan</strong> — the camera is optional. Search and manual logging work without it, and the app works fully offline.</li>
-<li><strong>Ask us</strong> — you can ask what we hold against your anonymous ID, and ask us to delete it.</li>
+<li><strong>Ask us</strong> — email leomartinezbarrio@gmail.com. You have the right to ask what we hold about you, to have it corrected, to have it deleted, to get a copy of it, to object to the analytics described above, and to ask us to restrict what we do with it. We will answer within one month.</li>
+</ul>
+<p>The honest caveat: because there is no account, the only thing that identifies you to us is the random id on your install, and we cannot verify that an id in an email is yours. If you can send us the id (Settings → Send feedback includes it), we can act on it. If you cannot, the Erase everything button does the same job faster and needs nobody's permission.</p>
+<ul>
+<li><strong>Complain</strong> — if you think we have handled your data badly, you can complain to the Spanish data protection authority, the <a href="https://www.aepd.es">Agencia Española de Protección de Datos</a>, or to the authority in your own EU country. You do not have to talk to us first.</li>
 </ul>
 <h2>Age</h2>
 <p>Surplus is not intended for under-16s and we do not knowingly collect anything from them.</p>
