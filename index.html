@@ -2,24 +2,213 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Legal — Surplus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Surplus — the calorie app that counts up</title>
+<meta name="description" content="Surplus gives you one calorie target a day and counts up to it. Built for gaining weight, not losing it. iPhone.">
+<meta property="og:title" content="Surplus — the calorie app that counts up">
+<meta property="og:description" content="Every calorie app is built to help someone eat less. This one isn't.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F4F0">
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; line-height: 1.6; color: #1c1b18; background: #F6F4F0; }
-  @media (prefers-color-scheme: dark) { body { color: #f0ede6; background: #17150f; } a { color: #f4b64e; } table, th, td { border-color: #3a362c; } }
-  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-  h2 { font-size: 1.15rem; margin-top: 2rem; }
-  a { color: #b9791f; }
-  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-  th, td { border: 1px solid #d8d2c4; padding: 0.5rem 0.75rem; text-align: left; font-size: 0.95rem; }
-  code { background: rgba(0,0,0,0.06); padding: 0.1rem 0.3rem; border-radius: 4px; }
-  nav { margin-bottom: 2rem; font-size: 0.9rem; }
-  nav a { margin-right: 1rem; }
+/* Tokens ported from src/ui/theme.ts. Two product rules are encoded here
+   rather than remembered: there is no red anywhere, and the neutrals are warm. */
+:root{
+  --bg:#F6F4F0; --surface:#FFFFFF; --border:#ECE8E1; --track:#EDE9E2;
+  --ink:#1C1B18; --ink-2:#8A857D; --ink-faint:#B9B2A6; --on-dark:#F6F4F0;
+  --short:#E8930C; --short-deep:#8A5B06; --short-light:#F5B34E;
+  --short-soft:#FBEED8; --short-edge:#F4DDB2;
+  --dark:#26231D;
+  --measure:34rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px; line-height:1.5; letter-spacing:-0.011em;
+  -webkit-font-smoothing:antialiased;
+}
+main{max-width:var(--measure); margin:0 auto; padding:clamp(2.5rem,9vw,5rem) 1.5rem 3rem}
+.wordmark{
+  font-size:.75rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-2); margin:0 0 clamp(2rem,7vw,3.25rem);
+}
+h1{
+  font-size:clamp(2rem,8.5vw,2.9rem); line-height:1.08; letter-spacing:-0.03em;
+  font-weight:700; margin:0 0 1.25rem;
+}
+h1 em{font-style:normal; color:var(--short)}
+.lede{font-size:clamp(1.0625rem,4vw,1.1875rem); color:var(--ink-2); margin:0 0 2.5rem}
+
+/* The mechanic is a bar that fills upward toward a number, so the page shows
+   it rather than describing it. */
+.gap{
+  background:var(--surface); border:1px solid var(--border); border-radius:18px;
+  padding:1.25rem 1.25rem 1.125rem; margin:0 0 2.5rem;
+}
+.gap-row{display:flex; align-items:baseline; justify-content:space-between; gap:1rem}
+.gap-eaten{font-size:1.75rem; font-weight:700; letter-spacing:-0.02em; font-variant-numeric:tabular-nums}
+.gap-target{font-size:.9375rem; color:var(--ink-faint); font-variant-numeric:tabular-nums}
+.track{height:10px; border-radius:999px; background:var(--track); margin:.875rem 0 .75rem; overflow:hidden}
+.fill{
+  height:100%; width:0; border-radius:999px;
+  background:linear-gradient(90deg,var(--short-light),var(--short));
+  animation:fill 1.6s cubic-bezier(.22,1,.36,1) .25s forwards;
+}
+@keyframes fill{to{width:71%}}
+.gap-note{
+  display:inline-block; font-size:.875rem; font-weight:600; color:var(--short-deep);
+  background:var(--short-soft); border:1px solid var(--short-edge);
+  border-radius:999px; padding:.1875rem .625rem;
+}
+@media (prefers-reduced-motion:reduce){.fill{animation:none; width:71%}}
+
+.points{list-style:none; margin:0 0 2.75rem; padding:0}
+.points li{padding:1.125rem 0; border-top:1px solid var(--border)}
+.points li:last-child{border-bottom:1px solid var(--border)}
+.points b{display:block; font-weight:650; margin-bottom:.1875rem}
+.points span{color:var(--ink-2); font-size:.9375rem}
+
+.cta{
+  display:block; width:100%; text-align:center; text-decoration:none;
+  background:var(--dark); color:var(--on-dark);
+  font-size:1.0625rem; font-weight:650; letter-spacing:-0.01em;
+  padding:1.0625rem 1.25rem; border-radius:16px;
+  transition:transform .12s ease;
+}
+.cta:active{transform:scale(.985)}
+.cta[aria-disabled="true"]{background:#E4E0D8; color:var(--ink-faint); pointer-events:none}
+.cta-note{text-align:center; font-size:.875rem; color:var(--ink-faint); margin:.875rem 0 0}
+
+footer{max-width:var(--measure); margin:0 auto; padding:2.5rem 1.5rem 3rem; text-align:center}
+footer a{color:var(--ink-2); font-size:.875rem; text-decoration:none; border-bottom:1px solid var(--border)}
+footer a+a{margin-left:1.25rem}
 </style>
 </head>
 <body>
-<nav><a href="index.html">Surplus</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav>
-<h1>Surplus — legal</h1><p><a href="privacy.html">Privacy policy</a></p><p><a href="terms.html">Terms of use</a></p>
+<main>
+  <p class="wordmark">Surplus</p>
+
+  <h1>Every calorie app is built to help someone eat less.<br><em>This one isn't.</em></h1>
+
+  <p class="lede">One number a day, and it counts up. Photograph what you eat and watch the gap close.</p>
+
+  <div class="gap" aria-hidden="true">
+    <div class="gap-row">
+      <span class="gap-eaten">2,060</span>
+      <span class="gap-target">of 2,900</span>
+    </div>
+    <div class="track"><div class="fill"></div></div>
+    <span class="gap-note">840 to go</span>
+  </div>
+
+  <ul class="points">
+    <li>
+      <b>It counts up, not down.</b>
+      <span>No warnings, nothing to go over. There is short, and there is closed.</span>
+    </li>
+    <li>
+      <b>A target built from your body, and an honest date.</b>
+      <span>Gain is capped at a rate that puts on size rather than just weight. Ask for faster and the app will say so.</span>
+    </li>
+    <li>
+      <b>You won't see the change in the mirror for months.</b>
+      <span>You'll see it here every week. Weigh in and the character moves &mdash; and it never moves backwards.</span>
+    </li>
+  </ul>
+
+  <a class="cta" id="cta" href="#" aria-disabled="true">Join the beta</a>
+  <p class="cta-note" id="cta-note">Free while it's in beta. iPhone only.</p>
+</main>
+
+<footer>
+  <a id="privacy" href="https://leozoc.github.io/surplus-legal/privacy">Privacy</a><a id="terms" href="https://leozoc.github.io/surplus-legal/terms">Terms</a>
+</footer>
+
+<script src="./config.js" onerror="window.SURPLUS_CONFIG=window.SURPLUS_CONFIG||{}"></script>
+<script>
+(function () {
+  'use strict';
+  var cfg = window.SURPLUS_CONFIG || {};
+
+  /* ---- Where the visitor came from -------------------------------------
+     One short, allow-listed token. A bio link carries one source at a time,
+     so this is coarse by construction: it separates TikTok from everything
+     else, not post from post. Anything unrecognised becomes 'other' rather
+     than being forwarded, because a query string is attacker-controlled text
+     and free text is how something nobody chose ends up in an analytics
+     warehouse. Same rule as the app's event catalogue. */
+  var ALLOWED = ['tiktok-bio', 'tiktok-post', 'ig-bio', 'direct', 'other'];
+  var raw = new URLSearchParams(location.search).get('s');
+  var source = raw ? (ALLOWED.indexOf(raw) > -1 ? raw : 'other') : 'direct';
+
+  /* ---- Analytics -------------------------------------------------------
+     Plain fetch to /batch/, no SDK, for the reason src/data/analytics/client.ts
+     gives: an analytics SDK's default behaviour is to collect whatever it can
+     reach. Hand-rolling means the set of things that can possibly be sent is
+     the set written here.
+
+     The visitor id lives in memory for this page load only: no cookie, no
+     localStorage. It joins a view to a click inside one visit and cannot
+     follow anyone between visits, which is the whole of what this page needs
+     to know. It is also why there is no consent banner. */
+  var visitId = 'w_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+  var host = (cfg.posthogHost || 'https://eu.i.posthog.com').replace(/\/+$/, '');
+
+  function capture(event, extra) {
+    if (!cfg.posthogKey) return;
+    var props = { source: source, $current_url: location.origin + location.pathname };
+    if (extra) { for (var k in extra) props[k] = extra[k]; }
+    var payload = JSON.stringify({
+      api_key: cfg.posthogKey,
+      batch: [{
+        event: event,
+        properties: props,
+        distinct_id: visitId,
+        timestamp: new Date().toISOString()
+      }]
+    });
+    /* keepalive so the click event survives the navigation that follows it.
+       Without it, the one number this page exists to produce is the one that
+       gets dropped. Every failure is swallowed: analytics must never be able
+       to break the thing it is measuring. */
+    try {
+      fetch(host + '/batch/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload,
+        keepalive: true,
+        mode: 'cors'
+      }).catch(function () {});
+    } catch (e) { /* no-op */ }
+  }
+
+  /* ---- Wiring ---------------------------------------------------------- */
+  var cta = document.getElementById('cta');
+  var note = document.getElementById('cta-note');
+
+  if (cfg.ctaUrl) {
+    cta.href = cfg.ctaUrl;
+    cta.setAttribute('aria-disabled', 'false');
+    cta.addEventListener('click', function () { capture('landing_cta_click'); });
+  } else {
+    /* No destination configured. An honest disabled state beats a dead link:
+       a 404 reached from a bio costs the install and the trust. */
+    note.textContent = 'The beta opens shortly. Nothing to tap yet.';
+  }
+
+  /* The legal links carry their real destination in the markup, not here, so
+     that a deploy which forgot config.js still has working ones. Config only
+     overrides. A footer link to "#" is the kind of thing nobody notices until
+     it is the thing App Review is looking at. */
+  var base = (cfg.legalBaseUrl || '').replace(/\/+$/, '');
+  if (base) {
+    document.getElementById('privacy').href = base + '/privacy';
+    document.getElementById('terms').href = base + '/terms';
+  }
+
+  capture('landing_view', { cta: cfg.ctaUrl ? 'live' : 'unset' });
+})();
+</script>
 </body>
 </html>
