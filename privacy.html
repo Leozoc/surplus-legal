@@ -21,7 +21,7 @@
 <body>
 <nav><a href="index.html">Surplus</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></nav>
 <h1>Privacy policy — Surplus</h1>
-<p><strong>Last updated 13 August 2026.</strong></p>
+<p><strong>Last updated 19 September 2026.</strong></p>
 <p>Surplus is a weight-gain tracker for iOS. This policy says what the app collects, where it goes, and what is never kept. It is written to be read, not to be survived.</p>
 <p><strong>Who is responsible for it.</strong> Surplus is operated by Leo Martinez Barrio, an individual developer based in Spain. That person is the data controller and can be reached at leomartinezbarrio@gmail.com. There is no company behind this and no other staff: one person built it and one person can see whatever the servers hold.</p>
 <h2>The short version</h2>
@@ -89,6 +89,9 @@
 <li><strong>OpenAI</strong> (United States) receives meal photos, kitchen photos, menu photos, typed meal descriptions, and the corrections you type about a meal along with the estimate being corrected. Transfers rely on the European Commission's Standard Contractual Clauses, which form part of OpenAI's data processing terms.</li>
 <li><strong>Apple</strong> and <strong>RevenueCat</strong> (United States) handle payment and subscription status, on the same basis.</li>
 </ul>
+<h2>Food databases</h2>
+<p>Searching for a food by name sends the words you typed to two public food databases &mdash; Open Food Facts and USDA FoodData Central &mdash; and scanning a barcode sends the number on the packet to Open Food Facts. Neither request carries your anonymous id or anything else about you; it identifies the app, as both databases ask, and nothing more. The product photographs the logging screen shows for a scanned packet are fetched from Open Food Facts the same way.</p>
+<p>Open Food Facts data is published under the Open Database License and its photographs under Creative Commons Attribution-ShareAlike; the app says so in Settings.</p>
 <h2>Analytics</h2>
 <p>We use PostHog to understand whether the app works: how many people finish setting up, where they stop, whether the scanner gets used.</p>
 <p>Every event we send is written down in advance in the app's source code, and anything not on that list is dropped before it is sent. <strong>Nothing about your body is on that list</strong> — not your weight, height, BMI, goal weight, age, or sex. Not the names of foods you log. Not photographs.</p>
@@ -103,11 +106,13 @@
 <tr><td>OpenAI (US)</td><td>Estimates calories from photos and from what you type, reads menus, and applies your corrections</td><td>The photo or the text, for that one request. Paid tier: not used for training</td></tr>
 <tr><td>RevenueCat</td><td>Subscription status</td><td>Your anonymous ID and subscription state</td></tr>
 <tr><td>PostHog</td><td>Product analytics</td><td>Anonymous events from the list described above</td></tr>
+<tr><td>Open Food Facts (France)</td><td>The food database behind barcode scans and typed search, and the product photographs shown on the logging screen</td><td>The barcode number or the words you searched for, and a request for the product&rsquo;s photograph. No account, no identifier of yours &mdash; only the app&rsquo;s name in the request</td></tr>
+<tr><td>USDA FoodData Central (US)</td><td>The second food database behind typed search</td><td>The words you searched for. No identifier of yours</td></tr>
 </table>
 <h2>Your choices, and your rights</h2>
 <ul>
 <li><strong>Erase everything</strong> — Settings → Erase everything. It removes your local data, your stored photos, your anonymous account, your subscription record, and every scan-cost row we hold against you. Menu text you contributed stays, with the link to you removed, because a menu is a public document and other people are relying on it.</li>
-<li><strong>Don't scan</strong> — the camera is optional. Search and manual logging work without it, and the app works fully offline.</li>
+<li><strong>Don't scan</strong> — the camera is optional. Manual logging works without it and without a connection. Searching for a food and scanning a barcode send the search text or the barcode number to the food databases named below.</li>
 <li><strong>Ask us</strong> — email leomartinezbarrio@gmail.com. You have the right to ask what we hold about you, to have it corrected, to have it deleted, to get a copy of it, to object to the analytics described above, and to ask us to restrict what we do with it. We will answer within one month.</li>
 </ul>
 <p>The honest caveat: because there is no account, the only thing that identifies you to us is the random id on your install, and we cannot verify that an id in an email is yours. If you can send us the id (Settings → Send feedback includes it), we can act on it. If you cannot, the Erase everything button does the same job faster and needs nobody's permission.</p>
